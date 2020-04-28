@@ -1,13 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider as ReduxProvider } from 'react-redux';
+import createRoutes from 'routes';
+import configureStore from 'state/store';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// initial dummmy data
+window.REDUX_INITIAL_DATA = {
+  home: {
+    entities: {}
+  }
+};
+
+const reduxStore = configureStore(window.REDUX_INITIAL_DATA);
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ReduxProvider store={reduxStore}>
+    <App router={<BrowserRouter>{createRoutes()}</BrowserRouter>} />
+  </ReduxProvider>,
   document.getElementById('root')
 );
 
