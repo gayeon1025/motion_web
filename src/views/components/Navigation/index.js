@@ -1,36 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import motionLogo from 'images/motion_logo.png';
 
-const Navigator = () => {
+const Navigation = () => {
   return (
     <div className="navigator">
-      <nav id={'navigation'}>
-        {/* <LogoContainer/> */}
-        <div id="menuContainer" className={'horizontal'}>
+      <Link to="/home" style={{ display: 'inline-block' }}>
+        <img
+          src={motionLogo}
+          style={{ width: '75px', height: '100%' }}
+          alt="motion_logo"
+        ></img>
+      </Link>
+      <nav id={'navigation'} style={{ display: 'inline-block' }}>
+        <div id="menuContainer" className="horizontal">
           <ul className="nav navbar-nav navbar-right menu-top">
             <li className="navi_item">
-              <Link href="/home">Home</Link>
+              <Link to="/home">Home</Link>
             </li>
             <li className="navi_item">
-              <Link href="/notices/1/15">공지사항 </Link>
+              <Link to="/notices/1/15">공지사항 </Link>
             </li>
             <li className="navi_item">
-              <Link href="/boards">게시판</Link>
+              <Link to="/boards">게시판</Link>
             </li>
             <li className="navi_item">
-              <Link href="/calendar">일정</Link>
+              <Link to="/calendar">일정</Link>
             </li>
             <li className="navi_item">
-              <Link href="/edu/1/15">교육</Link>
+              <Link to="/edu/1/15">교육</Link>
             </li>
             <li className="navi_item">
-              <Link href="/exams">기출문제</Link>
+              <Link to="/exams">기출문제</Link>
             </li>
             <li className="navi_item">
-              <Link href="/equipments">물품대여</Link>
+              <Link to="/equipments">물품대여</Link>
             </li>
             <li className="navi_item">
-              <Link href="/gallery">사진첩</Link>
+              <Link to="/gallery">사진첩</Link>
             </li>
             {/* <li className = { "navMenu" } >
                                     { this.state.userRoll ? (<Link className="menuText" onClick={() => {this.logout()}}>로그아웃</Link>) : (<Link className="login menuText" href="/login">로그인</Link>)}
@@ -42,4 +49,4 @@ const Navigator = () => {
   );
 };
 
-export default Navigator;
+export default Navigation;

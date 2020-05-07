@@ -7,13 +7,15 @@
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button{margin:0;padding:0}
 
 /* global */
+* {box-sizing:border-box;}
 .show {display:block}
 .hide {display:none}
+.horizontal {display:inline-block}
 
 /* layout */
 html,body{height:100%}
 
 /* navigator */
-.navigator {  }
-.navi_item { display:inline;border-left:1px solid #999;font:bold 12px Dotum;padding:0 15px;vertical-align: middle; }
-.navi_item > * { color:black;padding:10px 10px;text-decoration:none;font-family:'Do Hyeon', sans-serif;font-size: 18px;}
+.navigator { width:100%;padding:15px 20px;display:flex;justify-content:space-around;box-shadow:0px 2px 5px 0px rgba(0,0,0,0.30);position:fixed;}
+.navi_item { display:inline-block;margin:20px 0px;height:30px;line-height:30px;font:bold 12px Dotum;padding:0 15px;}
+.navi_item > * { height:30px;line-height:30px;color:black;padding:0px 10px;text-decoration:none;font-family:'Do Hyeon', sans-serif;font-size: 18px;}

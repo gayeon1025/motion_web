@@ -1,8 +1,8 @@
 import React from 'react';
-import Navigator from 'views/components/ContentWrapper/Navigator';
+import Navigation from 'views/components/Navigation';
 
 const ContentWrapper = () => {
-  return <Navigator />;
+  return <Navigation />;
 };
 
 export default ContentWrapper;
