@@ -29,6 +29,15 @@ html,body{height:100%}
 .navi_item { display:inline-block;margin:20px 0px;height:30px;line-height:30px;font:bold 12px Dotum;padding:0 15px;}
 .navi_item * { height:30px;line-height:30px;color:black;padding:0px 10px;text-decoration:none;font-family:'Do Hyeon', sans-serif;font-size: 18px;}
 
+/* pagination */
+.pagination { margin: 50px auto; }
+.pagination ul { display: -webkit-box;display: -ms-flexbox;display: flex;padding-left: 0;list-style: none;border-radius: .25rem;justify-content: center; }
+.page-item { position: relative;display: block;padding: .5rem .75rem;margin-left: -1px;line-height: 1.25;color: rgb(143, 148, 46);background-color: #fff;border: 1px solid #dee2e6;font-weight: bold;font-size: 20px; }
+.disabled { color: #6c757d;pointer-events: none;cursor: auto;background-color: #fff;border-color: #dee2e6; } 
+.page-item:hover { cursor: pointer;text-decoration: underline; }
+.page-item:first-child { margin-left: 0;border-top-left-radius: 5px;border-bottom-left-radius: 5px; }
+.page-item:last-child { border-top-right-radius: 5px;border-bottom-right-radius: 5px; } 
+
 /* layout header */
 .banner { background-image: url("images/banner.jpg");background-repeat: no-repeat;height: 550px; width: auto;overflow: hidden;z-index: -1;text-align: center;}
 .clouds { fill:#fff;stroke: #fff;overflow: hidden;margin-top: 90px; }

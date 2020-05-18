@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import queryString from 'query-string';
+import get from 'lodash/get';
+import { selectors, operations } from 'state/modules/home';
 import LayoutHeader from 'views/components/LayoutHeader';
+import { bindActionCreators } from 'redux';
+import Pagination from 'views/components/Pagination.js';
 
-const BoardPage = () => {
+const BoardPage = ({ boards, fetchBoards }) => {
   const isEmptyPost = true;
+  const currentPage =
+    window.location.search === ''
+      ? 1
+      : queryString.parse(window.location.search).page;
+
+  // useEffect(() => {
+  //   fetchBoards(page);
+  // }, [ page, fetchBoards ]);
 
   return (
     <>
@@ -38,9 +52,29 @@ const BoardPage = () => {
             ) : null}
           </tbody>
         </table>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={get(boards, 'numberOfTotalPages', 1)}
+          hasPreviousPage={get(boards, 'hasPreviousPage', false)}
+          hasNextPage={get(boards, 'hasNextPage', false)}
+          fetchBoards={fetchBoards}
+        />
       </div>
     </>
   );
 };
 
-export default BoardPage;
+function mapStateToProps(state, props) {
+  return {
+    boards: selectors.getBoards(state, props)
+  };
+}
+
+export default connect(mapStateToProps, dispatch =>
+  bindActionCreators(
+    {
+      fetchBoards: operations.fetchBoards
+    },
+    dispatch
+  )
+)(BoardPage);
