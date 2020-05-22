@@ -15,7 +15,12 @@ const Pagination = ({
   return (
     <div className="pagination">
       <ul>
-        <li className={classNames('page-item', { disabled: !hasPreviousPage })}>
+        <li
+          className={classNames('page-item', { disabled: !hasPreviousPage })}
+          onClick={() => {
+            hasPreviousPage && fetchBoards(currentPage - 1);
+          }}
+        >
           &laquo;
         </li>
         {Array.from(Array(5)).map((_, index) => {
@@ -33,7 +38,12 @@ const Pagination = ({
             )
           );
         })}
-        <li className={classNames('page-item', { disabled: !hasNextPage })}>
+        <li
+          className={classNames('page-item', { disabled: !hasNextPage })}
+          onClick={() => {
+            hasNextPage && fetchBoards(currentPage + 1);
+          }}
+        >
           &raquo;
         </li>
       </ul>

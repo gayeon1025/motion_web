@@ -47,12 +47,13 @@ html,body{height:100%}
 .banner_title span:last-child{font-weight:bold;font-size:20px;}
 
 /* board */
-.board .btn_add { color:rgb(143,148,46);background-color:transparent;border-color:rgb(143,148,46);border-radius:10px;font-size: 20px;width:150px;padding:5px 25px;margin:30px 80px; }
+.board .btn_add { color:rgb(143,148,46);background-color:transparent;border-color:rgb(143,148,46);border-radius:10px;font-size: 20px;width:150px;padding:5px 25px;margin:30px 0; }
 .board .btn_add:hover { cursor: pointer;transition: 0.5s;color: white;transition-property: background-color;background-color: rgb(192, 200, 98); }
-.board table { border-top:2px solid rgb(143,148,46);border-bottom:2px solid rgb(143,148,46);font-size: 18px;color:rgb(120,120,120);font-family: 'Noto Sans KR', sans-serif;border-collapse:collapse; }
+.board table { width:100%;border-top:2px solid rgb(143,148,46);border-bottom:2px solid rgb(143,148,46);font-size: 18px;color:rgb(120,120,120);font-family: 'Noto Sans KR', sans-serif;border-collapse:collapse; }
 .board table thead * * { border-bottom:2px solid rgb(143,148,46);font-weight:bold; }
 .board table thead * th:nth-child(1) { width:100px; }
 .board table thead * th:nth-child(2) { width:750px; }
 .board table thead * th:nth-child(3) { width:150px; }
 .board table thead * th:nth-child(4) { width:200px; }
+.board table tbody tr:hover { cursor: pointer; background-color: rgba(0,0,0,.05); }
 .board table tbody * * { padding: 7px 0; }

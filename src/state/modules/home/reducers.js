@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 
 const entitiesReducer = (state = {}, action) => {
-  console.log(action);
   if (action.entities) {
     return {
       ...state,

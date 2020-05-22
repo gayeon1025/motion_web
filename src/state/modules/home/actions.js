@@ -7,17 +7,9 @@ export function fetchBoardsRequest(page) {
   };
 }
 
-export function fetchBoardsSuccess(
-  numberOfTotalPages,
-  hasPreviousPage,
-  hasNextPage,
-  { entities }
-) {
+export function fetchBoardsSuccess({ entities }) {
   return {
     type: types.FETCH_BOARDS_SUCCESS,
-    numberOfTotalPages,
-    hasPreviousPage,
-    hasNextPage,
     entities
   };
 }

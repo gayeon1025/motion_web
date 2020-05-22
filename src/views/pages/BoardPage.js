@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import queryString from 'query-string';
 import get from 'lodash/get';
 import { selectors, operations } from 'state/modules/home';
 import LayoutHeader from 'views/components/LayoutHeader';
@@ -8,15 +7,8 @@ import { bindActionCreators } from 'redux';
 import Pagination from 'views/components/Pagination.js';
 
 const BoardPage = ({ boards, fetchBoards }) => {
-  const isEmptyPost = true;
-  const currentPage =
-    window.location.search === ''
-      ? 1
-      : queryString.parse(window.location.search).page;
-
-  // useEffect(() => {
-  //   fetchBoards(page);
-  // }, [ page, fetchBoards ]);
+  const currentPage = get(boards, 'currentPage', 1);
+  const isEmptyPost = !boards || !boards.items || boards.items.length === 0;
 
   return (
     <>
@@ -49,7 +41,16 @@ const BoardPage = ({ boards, fetchBoards }) => {
               <tr>
                 <td colSpan={4}>등록된 게시글이 없습니다</td>
               </tr>
-            ) : null}
+            ) : (
+              boards.items.map((board, index) => (
+                <tr key={index}>
+                  <th>{10 * (currentPage - 1) + (index + 1)}</th>
+                  <th className="title">{board.title}</th>
+                  <th>{board.author.name}</th>
+                  <th>{board.createdAt}</th>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
         <Pagination

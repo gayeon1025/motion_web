@@ -17,14 +17,7 @@ const fetchBoards = page => dispatch => {
   dispatch(fetchBoardsRequest(page));
   return client.get(`/boards?page=${page}`).then(result => {
     const camelized = camelizeKeys(result.data);
-    return dispatch(
-      fetchBoardsSuccess(
-        camelized.numberOfTotalPages,
-        camelized.hasPreviousPage,
-        camelized.hasNextPage,
-        normalize(camelized.items, [boardSchema])
-      )
-    );
+    return dispatch(fetchBoardsSuccess(normalize(camelized, boardSchema)));
   });
 };
 
