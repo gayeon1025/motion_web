@@ -1,5 +1,9 @@
 import { denormalize } from 'normalizr';
-import { board as boardSchema } from 'state/modules/home/schema';
+import get from 'lodash/get';
+import {
+  boards as boardListSchema,
+  board as boardSchema
+} from 'state/modules/home/schema';
 
 const getBoards = (state, props) => {
   const {
@@ -7,7 +11,7 @@ const getBoards = (state, props) => {
   } = state;
   if (entities.boards) {
     const keys = Object.keys(entities.boards);
-    return denormalize(entities.boards[keys[0]], boardSchema, entities);
+    return denormalize(entities.boards[keys[0]], boardListSchema, entities);
   }
 
   return [];
@@ -23,25 +27,30 @@ const getBoard = (state, props) => {
     }
   } = props;
 
-  if (!entities.boards) {
+  if (!entities.board || !entities.board[boardId]) {
     return null;
   }
 
-  const keys = Object.keys(entities.boards);
-  if (keys.length === 0) {
+  return {
+    ...denormalize(entities.board[boardId], boardSchema, entities),
+    attatchments: get(entities.board, 'attathcments', null)
+  };
+};
+
+const getAttatchments = (state, props) => {
+  const {
+    home: { entities }
+  } = state;
+
+  if (!entities.attatchments) {
     return null;
   }
 
-  if (entities.boards[keys[0]]) {
-    return entities.boards[keys[0]].items.find(
-      board => board.id === parseInt(boardId)
-    );
-  }
-
-  return null;
+  return entities.attatchments;
 };
 
 export default {
   getBoards,
-  getBoard
+  getBoard,
+  getAttatchments
 };

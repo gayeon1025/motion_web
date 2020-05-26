@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import get from 'lodash/get';
 import { selectors, operations } from 'state/modules/home';
 import LayoutHeader from 'views/components/LayoutHeader';
-import { bindActionCreators } from 'redux';
-import Pagination from 'views/components/Pagination.js';
+import Pagination from 'views/components/Pagination/index.js';
 import { useHistory } from 'react-router-dom';
 
 const BoardPage = ({ boards, fetchBoards }) => {
