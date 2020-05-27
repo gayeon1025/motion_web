@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import get from 'lodash/get';
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
@@ -9,7 +8,7 @@ import LayoutHeader from 'views/components/LayoutHeader';
 import { selectors, operations } from 'state/modules/home';
 import Attatchments from 'views/components/Attatchments';
 
-const BoardDetail = ({
+const BoardEditor = ({
   boardId,
   board,
   attatchments,
@@ -41,7 +40,7 @@ const BoardDetail = ({
   return (
     <>
       <LayoutHeader />
-      <div className="board_detail wrap_content">
+      <div className="board_editor wrap_content">
         <table className="title_table">
           <tbody>
             <tr>
@@ -102,4 +101,4 @@ export default connect(mapStateToProps, dispatch =>
     },
     dispatch
   )
-)(BoardDetail);
+)(BoardEditor);

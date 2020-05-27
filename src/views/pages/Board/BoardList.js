@@ -7,13 +7,17 @@ import LayoutHeader from 'views/components/LayoutHeader';
 import Pagination from 'views/components/Pagination/index.js';
 import { useHistory } from 'react-router-dom';
 
-const BoardPage = ({ boards, fetchBoards }) => {
+const BoardList = ({ boards, fetchBoards }) => {
   const currentPage = get(boards, 'currentPage', 1);
   const isEmptyPost = !boards || !boards.items || boards.items.length === 0;
   let history = useHistory();
 
   const handleBoardClick = id => {
     history.push(`/boards/${id}`);
+  };
+
+  const handleNewBoard = () => {
+    history.push('/boards/new');
   };
 
   return (
@@ -29,7 +33,11 @@ const BoardPage = ({ boards, fetchBoards }) => {
           </span>
         </div>
         <div style={{ textAlign: 'right' }}>
-          <button className="btn_add font_thin" type="button">
+          <button
+            className="btn_add font_thin"
+            type="button"
+            onClick={() => handleNewBoard()}
+          >
             글쓰기
           </button>
         </div>
@@ -84,4 +92,4 @@ export default connect(mapStateToProps, dispatch =>
     },
     dispatch
   )
-)(BoardPage);
+)(BoardList);
