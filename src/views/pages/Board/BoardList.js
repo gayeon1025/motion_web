@@ -1,14 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import get from 'lodash/get';
 import { selectors, operations } from 'state/modules/home';
 import LayoutHeader from 'views/components/LayoutHeader';
-import { bindActionCreators } from 'redux';
-import Pagination from 'views/components/Pagination.js';
+import Pagination from 'views/components/Pagination/index.js';
+import { useHistory } from 'react-router-dom';
 
-const BoardPage = ({ boards, fetchBoards }) => {
+const BoardList = ({ boards, fetchBoards }) => {
   const currentPage = get(boards, 'currentPage', 1);
   const isEmptyPost = !boards || !boards.items || boards.items.length === 0;
+  let history = useHistory();
+
+  const handleBoardClick = id => {
+    history.push(`/boards/${id}`);
+  };
+
+  const handleNewBoard = () => {
+    history.push('/boards/new');
+  };
 
   return (
     <>
@@ -23,7 +33,11 @@ const BoardPage = ({ boards, fetchBoards }) => {
           </span>
         </div>
         <div style={{ textAlign: 'right' }}>
-          <button className="btn_add font_thin" type="button">
+          <button
+            className="btn_add font_thin"
+            type="button"
+            onClick={() => handleNewBoard()}
+          >
             글쓰기
           </button>
         </div>
@@ -43,7 +57,7 @@ const BoardPage = ({ boards, fetchBoards }) => {
               </tr>
             ) : (
               boards.items.map((board, index) => (
-                <tr key={index}>
+                <tr key={index} onClick={() => handleBoardClick(board.id)}>
                   <th>{10 * (currentPage - 1) + (index + 1)}</th>
                   <th className="title">{board.title}</th>
                   <th>{board.author.name}</th>
@@ -78,4 +92,4 @@ export default connect(mapStateToProps, dispatch =>
     },
     dispatch
   )
-)(BoardPage);
+)(BoardList);

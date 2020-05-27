@@ -5,6 +5,8 @@
 
 /* reset */
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button{margin:0;padding:0}
+a{color:#333;text-decoration:none}
+a:active, a:hover{text-decoration:underline}
 
 /* global */
 * {box-sizing:border-box;}
@@ -20,6 +22,8 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,texta
 .content_title * { display: block;margin:0 auto; }
 .content_title span:first-child{color: rgb(151, 151, 151);border-bottom:2px solid rgb(130, 130, 130);font-size:27px;}
 .content_title span:last-child{color:rgb(180,180,180);font-size:17px;}
+.add_post { border-radius: 10px;padding: 10px 70px;margin: 30px auto;background-color: rgb(143, 148, 46);font-weight: bold;font-size: 25px;color: white;width: 220px; }
+.add_post:hover { cursor: pointer;transition: 0.5s;color: rgb(143, 148, 46);transition-property: background-color;background-color: white; }
 
 /* layout */
 html,body{height:100%}
@@ -46,7 +50,18 @@ html,body{height:100%}
 .banner_title span:first-child{font-weight:bold;font-size:70px;}
 .banner_title span:last-child{font-weight:bold;font-size:20px;}
 
-/* board */
+/* attatchments */
+.attachments table { width: 100%;margin: 10px auto; }
+.attatchment_box td:first-child { padding: 5px 20px; width: 25%; }
+.attatchment_box td:last-child { text-align: left;padding: 0 20px; }
+.attatchment_box label { padding: 3px 15px;color: dimgrey;font-weight: 600;line-height: normal;vertical-align: middle;cursor: pointer;border: 1px solid dimgrey;border-radius: .25em;font-size: 16px;margin: 0 5px; }
+.attatchment_box label:hover { border: 1px solid rgb(143, 148, 46);color: rgb(143, 168, 60); }
+.attatchment_box label:active { background-color: rgb(192, 200, 98);color: white; }
+.attatchment_box input[type="file"] { position: absolute;width: 1px;height: 1px;padding: 0;margin: -1px;overflow: hidden;clip: rect(0, 0, 0, 0);border: 0; }
+.file_list { border: 1px solid #ccc;border-collapse: collapse;color: dimgrey;margin-top: 10px;font-size: 14px; } 
+.file_list thead td { border-bottom: 1px solid #ccc;background-color: #fbfbfb;text-align: center; }
+
+/* board list*/
 .board .btn_add { color:rgb(143,148,46);background-color:transparent;border-color:rgb(143,148,46);border-radius:10px;font-size: 20px;width:150px;padding:5px 25px;margin:30px 0; }
 .board .btn_add:hover { cursor: pointer;transition: 0.5s;color: white;transition-property: background-color;background-color: rgb(192, 200, 98); }
 .board table { width:100%;border-top:2px solid rgb(143,148,46);border-bottom:2px solid rgb(143,148,46);font-size: 18px;color:rgb(120,120,120);font-family: 'Noto Sans KR', sans-serif;border-collapse:collapse; }
@@ -57,3 +72,19 @@ html,body{height:100%}
 .board table thead * th:nth-child(4) { width:200px; }
 .board table tbody tr:hover { cursor: pointer; background-color: rgba(0,0,0,.05); }
 .board table tbody * * { padding: 7px 0; }
+
+/* board detail */
+.board_detail table { width: 100%;border-top:2px solid  rgb(192, 200, 98);border-bottom:2px solid  rgb(192, 200, 98);border-collapse: collapse; }
+.board_detail table tbody tr th { width: 20%;padding: 5px 20px;border-bottom: 1px solid rgba(0,0,0,.05);background-color: #f7f7f7 }
+.board_detail table tbody tr td { text-align: left;padding: 0 20px;border-bottom: 1px solid rgba(0,0,0,.1); }
+.board_detail .contents_box { text-align:left;padding:50px 20px;min-height: 400px; }
+.board_detail button { border-radius: 10px;padding: 10px 70px;margin: 30px auto;background-color: rgb(143, 148, 46);font-weight: bold;font-size: 22px;color: white;width: 240px; } 
+.board_detail button:hover { cursor: pointer;transition: 0.5s;color: rgb(143, 148, 46);transition-property: background-color;background-color: white; }
+/* .board_detail .attatchment_table { width: 100%; } */
+
+/* board editor */
+.board_editor .title_table { width: 100%;}
+.board_editor .title_table tbody tr td:first-child { width: 25%;padding: 5px 20px;border-right: 2px solid rgb(143, 148, 46); }
+.board_editor .title_table tbody tr td:last-child { text-align: left;padding: 0 20px; }
+.board_editor .title_table tbody tr td:last-child input { width:100%;font-size: 18px;border:none; }
+
