@@ -15,6 +15,7 @@ a:active, a:hover{text-decoration:underline}
 .horizontal {display:inline-block}
 .font_bold {font-family: 'Roboto Condensed', sans-serif;}
 .font_thin {font-family: 'Noto Sans KR', sans-serif;}
+button { outline:none; }
 
 /* content global */
 .wrap_content {width:100%;padding:50px 200px;text-align: center}
@@ -88,3 +89,10 @@ html,body{height:100%}
 .board_editor .title_table tbody tr td:last-child { text-align: left;padding: 0 20px; }
 .board_editor .title_table tbody tr td:last-child input { width:100%;font-size: 18px;border:none; }
 
+/* calendar */
+.calendar { margin-bottom: 130px; }
+.calendar_navigator { width:100%;text-align:right;margin: 15px auto; } 
+.calendar_navigator button { cursor:pointer;border-radius:25px;border:1px solid #ddd;color:#333;background-color:#fff;text-align:center;font-size:14px;padding:8px 11px;line-height:1;margin:2px; }
+.calendar_navigator button:hover { border-color: rgba(0,0,0,.3); }
+.calendar_navigator .move_today { padding: 0 20px;line-height:30px; }
+.calendar_navigator span { margin: 0 18px;font-size:18px; }

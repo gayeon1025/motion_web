@@ -7,11 +7,15 @@ import {
   fetchBoardRequest,
   fetchBoardSuccess,
   fetchBoardFailure,
-  fetchAttatchmentsSuccess
+  fetchAttatchmentsSuccess,
+  saveScheduleRequest,
+  saveScheduleFailure,
+  saveScheduleSuccess
 } from 'state/modules/home/actions';
 import {
   boards as boardListSchema,
-  board as boardSchema
+  board as boardSchema,
+  schedule as schduleSchema
 } from 'state/modules/home/schema';
 import { normalize } from 'normalizr';
 
@@ -48,15 +52,28 @@ const fetchAttatchments = files => dispatch => {
 };
 
 const saveBoard = board => dispatch => {
-  console.log(board);
   return client.post(`/boards`, board).then(result => {
     console.log(result.data);
   });
+};
+
+const saveSchedule = schedule => dispatch => {
+  dispatch(saveScheduleRequest());
+  return client
+    .post(`/schedules`, schedule)
+    .then(result => {
+      if (result.status === 200) {
+        console.log(normalize(schedule, schduleSchema));
+        return dispatch(saveScheduleSuccess(schedule));
+      }
+    })
+    .catch(error => saveScheduleFailure(error));
 };
 
 export default {
   fetchBoards,
   fetchBoard,
   fetchAttatchments,
-  saveBoard
+  saveBoard,
+  saveSchedule
 };

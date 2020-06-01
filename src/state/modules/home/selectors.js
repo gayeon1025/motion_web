@@ -49,8 +49,17 @@ const getAttatchments = (state, props) => {
   return entities.attatchments;
 };
 
+const getSchedules = (state, props) => {
+  const {
+    home: { entities }
+  } = state;
+
+  return entities.attatchments;
+};
+
 export default {
   getBoards,
   getBoard,
-  getAttatchments
+  getAttatchments,
+  getSchedules
 };

@@ -48,3 +48,23 @@ export function fetchAttatchmentsSuccess(files) {
     attatchments: files
   };
 }
+
+export function saveScheduleRequest() {
+  return {
+    type: types.SAVE_SCHEDULE_REQUEST
+  };
+}
+
+export function saveScheduleSuccess({ entities }) {
+  return {
+    type: types.SAVE_SCHEDULE_SUCCESS,
+    entities
+  };
+}
+
+export function saveScheduleFailure(error) {
+  return {
+    type: types.SAVE_SCHEDULE_FAILURE,
+    error
+  };
+}
