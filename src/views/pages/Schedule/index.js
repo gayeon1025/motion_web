@@ -6,6 +6,7 @@ import LayoutHeader from 'views/components/LayoutHeader';
 import ScheduleCalendar from 'views/components/Calendar';
 
 const Schedule = ({ schedules, saveSchedule }) => {
+  console.log(schedules);
   const monthFormat = month => {
     let formattedMonth = month + '';
     formattedMonth =
@@ -20,8 +21,6 @@ const Schedule = ({ schedules, saveSchedule }) => {
     year: new Date().getFullYear(),
     month: monthFormat(new Date().getMonth() + 1)
   });
-
-  useRef();
 
   const calendarRef = useRef();
 
@@ -87,7 +86,6 @@ const Schedule = ({ schedules, saveSchedule }) => {
 };
 
 function mapStateToProps(state, props) {
-  console.log(props);
   return {
     schedules: selectors.getSchedules(state, props)
   };

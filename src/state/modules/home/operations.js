@@ -63,8 +63,10 @@ const saveSchedule = schedule => dispatch => {
     .post(`/schedules`, schedule)
     .then(result => {
       if (result.status === 200) {
-        console.log(normalize(schedule, schduleSchema));
-        return dispatch(saveScheduleSuccess(schedule));
+        // console.log(normalize(result.data, schduleSchema));
+        return dispatch(
+          saveScheduleSuccess(normalize(result.data, schduleSchema))
+        );
       }
     })
     .catch(error => saveScheduleFailure(error));

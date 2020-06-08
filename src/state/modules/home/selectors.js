@@ -54,7 +54,7 @@ const getSchedules = (state, props) => {
     home: { entities }
   } = state;
 
-  return entities.attatchments;
+  return entities.schedules;
 };
 
 export default {

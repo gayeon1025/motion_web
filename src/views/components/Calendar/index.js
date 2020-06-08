@@ -1,15 +1,17 @@
-import React, { useRef } from 'react';
+import React, { useEffect } from 'react';
 import Calendar from '@toast-ui/react-calendar';
 import 'tui-calendar/dist/tui-calendar.css';
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 
 const ScheduleCalendar = ({ schedules, calendarRef, onSaveSchedule }) => {
-  useRef(() => {
+  console.log(schedules);
+  useEffect(() => {
     if (schedules) {
+      console.log('...');
       calendarRef.current.getInstance().createSchedules(schedules);
     }
-  }, [schedules]);
+  }, [schedules, calendarRef]);
 
   return (
     <Calendar
