@@ -2,8 +2,10 @@ import { denormalize } from 'normalizr';
 import get from 'lodash/get';
 import {
   boards as boardListSchema,
-  board as boardSchema
+  board as boardSchema,
+  schedule as scheduleSchema
 } from 'state/modules/home/schema';
+import { convertToTZDate } from 'utils/dateUtil';
 
 const getBoards = (state, props) => {
   const {
@@ -54,7 +56,17 @@ const getSchedules = (state, props) => {
     home: { entities }
   } = state;
 
-  return entities.schedules;
+  if (!entities.schedules) {
+    return entities.schedules;
+  }
+
+  const schedules = [];
+  Object.keys(entities.schedules).forEach(id => {
+    const schedule = entities.schedules[id];
+    schedules.push(schedule);
+  });
+
+  return schedules;
 };
 
 export default {

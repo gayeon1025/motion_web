@@ -6,13 +6,6 @@ import 'tui-time-picker/dist/tui-time-picker.css';
 
 const ScheduleCalendar = ({ schedules, calendarRef, onSaveSchedule }) => {
   console.log(schedules);
-  useEffect(() => {
-    if (schedules) {
-      console.log('...');
-      calendarRef.current.getInstance().createSchedules(schedules);
-    }
-  }, [schedules, calendarRef]);
-
   return (
     <Calendar
       ref={calendarRef}
@@ -43,6 +36,7 @@ const ScheduleCalendar = ({ schedules, calendarRef, onSaveSchedule }) => {
           tooltip: 'Seoul'
         }
       ]}
+      schedules={schedules}
       useCreationPopup
     />
   );

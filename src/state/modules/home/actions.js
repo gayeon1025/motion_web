@@ -49,6 +49,26 @@ export function fetchAttatchmentsSuccess(files) {
   };
 }
 
+export function fetchSchedulesRequest() {
+  return {
+    type: types.FETCH_SCHEDULES_REQUEST
+  };
+}
+
+export function fetchSchedulesSuccess({ entities }) {
+  return {
+    type: types.FETCH_SCHEDULES_SUCCESS,
+    entities
+  };
+}
+
+export function fetchSchedulesFailure(error) {
+  return {
+    type: types.FETCH_SCHEDULES_FAILURE,
+    error
+  };
+}
+
 export function saveScheduleRequest() {
   return {
     type: types.SAVE_SCHEDULE_REQUEST

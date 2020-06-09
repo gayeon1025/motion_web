@@ -1,12 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectors, operations } from 'state/modules/home';
 import LayoutHeader from 'views/components/LayoutHeader';
 import ScheduleCalendar from 'views/components/Calendar';
 
-const Schedule = ({ schedules, saveSchedule }) => {
-  console.log(schedules);
+const Schedule = ({ schedules, saveSchedule, fetchSchedules }) => {
   const monthFormat = month => {
     let formattedMonth = month + '';
     formattedMonth =
@@ -23,6 +22,10 @@ const Schedule = ({ schedules, saveSchedule }) => {
   });
 
   const calendarRef = useRef();
+
+  useEffect(() => {
+    fetchSchedules(Number(date.year), Number(date.month));
+  }, [date.year, date.month, fetchSchedules]);
 
   const onMovePrev = () => {
     calendarRef.current.getInstance().prev();
@@ -86,6 +89,7 @@ const Schedule = ({ schedules, saveSchedule }) => {
 };
 
 function mapStateToProps(state, props) {
+  console.log(state);
   return {
     schedules: selectors.getSchedules(state, props)
   };
@@ -94,7 +98,8 @@ function mapStateToProps(state, props) {
 export default connect(mapStateToProps, dispatch =>
   bindActionCreators(
     {
-      saveSchedule: operations.saveSchedule
+      saveSchedule: operations.saveSchedule,
+      fetchSchedules: operations.fetchSchedules
     },
     dispatch
   )

@@ -8,6 +8,9 @@ import {
   fetchBoardSuccess,
   fetchBoardFailure,
   fetchAttatchmentsSuccess,
+  fetchSchedulesRequest,
+  fetchSchedulesSuccess,
+  fetchSchedulesFailure,
   saveScheduleRequest,
   saveScheduleFailure,
   saveScheduleSuccess
@@ -15,7 +18,7 @@ import {
 import {
   boards as boardListSchema,
   board as boardSchema,
-  schedule as schduleSchema
+  schedule as scheduleSchema
 } from 'state/modules/home/schema';
 import { normalize } from 'normalizr';
 
@@ -57,15 +60,29 @@ const saveBoard = board => dispatch => {
   });
 };
 
+const fetchSchedules = (year, month) => dispatch => {
+  dispatch(fetchSchedulesRequest());
+  return client
+    .get(`schedules?year=${year}&month=${month}`)
+    .then(result => {
+      const camelized = camelizeKeys(result.data);
+      console.log(result.data);
+      // console.log(normalize(camelized, scheduleSchema));
+      return dispatch(
+        fetchSchedulesSuccess(normalize(camelized, scheduleSchema))
+      );
+    })
+    .catch(error => fetchSchedulesFailure(error));
+};
+
 const saveSchedule = schedule => dispatch => {
   dispatch(saveScheduleRequest());
   return client
     .post(`/schedules`, schedule)
     .then(result => {
       if (result.status === 200) {
-        // console.log(normalize(result.data, schduleSchema));
         return dispatch(
-          saveScheduleSuccess(normalize(result.data, schduleSchema))
+          saveScheduleSuccess(normalize(result.data, scheduleSchema))
         );
       }
     })
@@ -77,5 +94,6 @@ export default {
   fetchBoard,
   fetchAttatchments,
   saveBoard,
+  fetchSchedules,
   saveSchedule
 };
