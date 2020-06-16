@@ -6,6 +6,7 @@ import BoardList from 'views/pages/Board/BoardList';
 import BoardDetail from 'views/pages/Board/BoardDetail';
 import BoardEditor from 'views/pages/Board/BoardEditor';
 import Schedule from 'views/pages/Schedule';
+import AdminPage from 'views/pages/Admin';
 
 export default function createRoutes() {
   return (
@@ -14,6 +15,7 @@ export default function createRoutes() {
       <Route exact path="/boards/new" component={BoardEditor} />
       <Route exact path="/boards/:boardId" component={BoardDetail} />
       <Route exact path="/calendar" component={Schedule} />
+      <Route exact path="/admin" component={AdminPage} />
       <Route path="*" component={ErrorPage} />
     </Switch>
   );

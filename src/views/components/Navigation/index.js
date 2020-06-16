@@ -39,6 +39,9 @@ const Navigation = () => {
             <li className="navi_item">
               <Link to="/gallery">사진첩</Link>
             </li>
+            <li className="navi_item">
+              <Link to="/admin">관리자 페이지</Link>
+            </li>
             {/* <li className = { "navMenu" } >
                                     { this.state.userRoll ? (<Link className="menuText" onClick={() => {this.logout()}}>로그아웃</Link>) : (<Link className="login menuText" href="/login">로그인</Link>)}
                                 </li> */}
