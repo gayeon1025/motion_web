@@ -5,7 +5,13 @@ import { selectors, operations } from 'state/modules/home';
 import LayoutHeader from 'views/components/LayoutHeader';
 import ScheduleCalendar from 'views/components/Calendar';
 
-const Schedule = ({ schedules, saveSchedule, fetchSchedules }) => {
+const Schedule = ({
+  schedules,
+  fetchSchedules,
+  saveSchedule,
+  changeSchedule,
+  deleteSchedule
+}) => {
   const monthFormat = month => {
     let formattedMonth = month + '';
     formattedMonth =
@@ -82,6 +88,8 @@ const Schedule = ({ schedules, saveSchedule, fetchSchedules }) => {
           schedules={schedules}
           calendarRef={calendarRef}
           onSaveSchedule={saveSchedule}
+          onChangeSchedule={changeSchedule}
+          onDeleteSchedule={deleteSchedule}
         />
       </div>
     </>
@@ -89,7 +97,6 @@ const Schedule = ({ schedules, saveSchedule, fetchSchedules }) => {
 };
 
 function mapStateToProps(state, props) {
-  console.log(state);
   return {
     schedules: selectors.getSchedules(state, props)
   };
@@ -98,8 +105,10 @@ function mapStateToProps(state, props) {
 export default connect(mapStateToProps, dispatch =>
   bindActionCreators(
     {
+      fetchSchedules: operations.fetchSchedules,
       saveSchedule: operations.saveSchedule,
-      fetchSchedules: operations.fetchSchedules
+      changeSchedule: operations.changeSchedule,
+      deleteSchedule: operations.deleteSchedule
     },
     dispatch
   )

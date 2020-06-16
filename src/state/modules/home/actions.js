@@ -56,6 +56,7 @@ export function fetchSchedulesRequest() {
 }
 
 export function fetchSchedulesSuccess({ entities }) {
+  console.log(entities);
   return {
     type: types.FETCH_SCHEDULES_SUCCESS,
     entities
@@ -85,6 +86,46 @@ export function saveScheduleSuccess({ entities }) {
 export function saveScheduleFailure(error) {
   return {
     type: types.SAVE_SCHEDULE_FAILURE,
+    error
+  };
+}
+
+export function changeScheduleRequest() {
+  return {
+    type: types.CHANGE_SCHEDULE_REQUEST
+  };
+}
+
+export function changeScheduleSuccess({ entities }) {
+  return {
+    type: types.CHANGE_SCHEDULE_SUCCESS,
+    entities
+  };
+}
+
+export function changeScheduleFailure(error) {
+  return {
+    type: types.CHANGE_SCHEDULE_FAILURE,
+    error
+  };
+}
+
+export function deleteScheduleRequest() {
+  return {
+    type: types.DELETE_SCHEDULE_REQUEST
+  };
+}
+
+export function deleteScheduleSuccess({ entities }) {
+  return {
+    type: types.DELETE_SCHEDULE_SUCCESS,
+    entities
+  };
+}
+
+export function deleteScheduleFailure(error) {
+  return {
+    type: types.DELETE_SCHEDULE_FAILURE,
     error
   };
 }

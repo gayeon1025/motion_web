@@ -13,7 +13,13 @@ import {
   fetchSchedulesFailure,
   saveScheduleRequest,
   saveScheduleFailure,
-  saveScheduleSuccess
+  saveScheduleSuccess,
+  changeScheduleRequest,
+  changeScheduleSuccess,
+  changeScheduleFailure,
+  deleteScheduleRequest,
+  deleteScheduleSuccess,
+  deleteScheduleFailure
 } from 'state/modules/home/actions';
 import {
   boards as boardListSchema,
@@ -66,10 +72,8 @@ const fetchSchedules = (year, month) => dispatch => {
     .get(`schedules?year=${year}&month=${month}`)
     .then(result => {
       const camelized = camelizeKeys(result.data);
-      console.log(result.data);
-      // console.log(normalize(camelized, scheduleSchema));
       return dispatch(
-        fetchSchedulesSuccess(normalize(camelized, scheduleSchema))
+        fetchSchedulesSuccess(normalize(camelized, [scheduleSchema]))
       );
     })
     .catch(error => fetchSchedulesFailure(error));
@@ -89,11 +93,43 @@ const saveSchedule = schedule => dispatch => {
     .catch(error => saveScheduleFailure(error));
 };
 
+const changeSchedule = schedule => dispatch => {
+  dispatch(changeScheduleRequest());
+  return client
+    .put(`/schedules/${schedule.schedule.id}`, schedule.changes)
+    .then(result => {
+      if (result.status === 200) {
+        // alert("변경되었습니다");
+        return dispatch(
+          changeScheduleSuccess(normalize(result.data, scheduleSchema))
+        );
+      }
+    })
+    .catch(error => changeScheduleFailure(error));
+};
+
+const deleteSchedule = schedule => dispatch => {
+  dispatch(deleteScheduleRequest());
+  return client
+    .delete(`/schedules/${schedule.schedule.id}`)
+    .then(result => {
+      if (result.status === 200) {
+        alert('삭제되었습니다');
+        return dispatch(
+          deleteScheduleSuccess(normalize(result.data, scheduleSchema))
+        );
+      }
+    })
+    .catch(error => deleteScheduleFailure(error));
+};
+
 export default {
   fetchBoards,
   fetchBoard,
   fetchAttatchments,
   saveBoard,
   fetchSchedules,
-  saveSchedule
+  saveSchedule,
+  changeSchedule,
+  deleteSchedule
 };
