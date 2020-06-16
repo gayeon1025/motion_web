@@ -2,10 +2,8 @@ import { denormalize } from 'normalizr';
 import get from 'lodash/get';
 import {
   boards as boardListSchema,
-  board as boardSchema,
-  schedule as scheduleSchema
+  board as boardSchema
 } from 'state/modules/home/schema';
-import { convertToTZDate } from 'utils/dateUtil';
 
 const getBoards = (state, props) => {
   const {

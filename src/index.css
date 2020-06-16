@@ -15,7 +15,7 @@ a:active, a:hover{text-decoration:underline}
 .horizontal {display:inline-block}
 .font_bold {font-family: 'Roboto Condensed', sans-serif;}
 .font_thin {font-family: 'Noto Sans KR', sans-serif;}
-button { outline:none; }
+button:focus { outline:none; }
 
 /* content global */
 .wrap_content {width:100%;padding:50px 200px;text-align: center}
@@ -79,8 +79,8 @@ html,body{height:100%}
 .board_detail table tbody tr th { width: 20%;padding: 5px 20px;border-bottom: 1px solid rgba(0,0,0,.05);background-color: #f7f7f7 }
 .board_detail table tbody tr td { text-align: left;padding: 0 20px;border-bottom: 1px solid rgba(0,0,0,.1); }
 .board_detail .contents_box { text-align:left;padding:50px 20px;min-height: 400px; }
-.board_detail button { border-radius: 10px;padding: 10px 70px;margin: 30px auto;background-color: rgb(143, 148, 46);font-weight: bold;font-size: 22px;color: white;width: 240px; } 
-.board_detail button:hover { cursor: pointer;transition: 0.5s;color: rgb(143, 148, 46);transition-property: background-color;background-color: white; }
+.board_detail button { border:none;border-radius: 10px;padding: 10px 70px;margin: 30px auto;background-color: rgb(143, 148, 46);font-weight: bold;font-size: 22px;color: white;width: 240px; } 
+.board_detail button:hover { border:1px solid rgb(143, 148, 46);cursor: pointer;transition: 0.5s;color: rgb(143, 148, 46);transition-property: background-color;background-color: white; }
 /* .board_detail .attatchment_table { width: 100%; } */
 
 /* board editor */
