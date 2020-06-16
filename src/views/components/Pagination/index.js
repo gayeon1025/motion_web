@@ -9,7 +9,9 @@ const Pagination = ({
   hasNextPage
 }) => {
   useEffect(() => {
-    fetchBoards(currentPage);
+    if (currentPage) {
+      fetchBoards(currentPage);
+    }
   }, [fetchBoards, currentPage]);
 
   return (

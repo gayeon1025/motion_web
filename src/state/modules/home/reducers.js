@@ -4,6 +4,20 @@ import types from 'state/modules/home/types';
 
 const entitiesReducer = produce((draft = {}, action) => {
   switch (action.type) {
+    case types.FETCH_BOARDS_SUCCESS:
+      draft.boards = action.entities.boards;
+      draft.users = action.entities.users;
+      break;
+    case types.FETCH_BOARD_SUCCESS:
+      draft.board = Object.assign(
+        draft.board ? draft.board : {},
+        action.entities.board
+      );
+      draft.users = Object.assign(
+        draft.users ? draft.users : {},
+        action.entities.users
+      );
+      break;
     case types.FETCH_SCHEDULES_SUCCESS:
       draft.schedules = action.entities.schedules;
       break;

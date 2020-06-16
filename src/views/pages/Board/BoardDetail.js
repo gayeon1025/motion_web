@@ -11,7 +11,6 @@ const BoardDetail = ({
   fetchBoard,
   fetchAttatchments
 }) => {
-  console.log(board);
   useEffect(() => {
     if (!board) {
       fetchBoard(boardId);
