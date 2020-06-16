@@ -63,7 +63,7 @@ html,body{height:100%}
 .file_list thead td { border-bottom: 1px solid #ccc;background-color: #fbfbfb;text-align: center; }
 
 /* board list*/
-.board .btn_add { color:rgb(143,148,46);background-color:transparent;border-color:rgb(143,148,46);border-radius:10px;font-size: 20px;width:150px;padding:5px 25px;margin:30px 0; }
+.board .btn_add { color:rgb(143,148,46);background-color:transparent;border:1px solid rgb(143,148,46);border-radius:10px;font-size: 20px;width:150px;padding:5px 25px;margin:30px 0; }
 .board .btn_add:hover { cursor: pointer;transition: 0.5s;color: white;transition-property: background-color;background-color: rgb(192, 200, 98); }
 .board table { width:100%;border-top:2px solid rgb(143,148,46);border-bottom:2px solid rgb(143,148,46);font-size: 18px;color:rgb(120,120,120);font-family: 'Noto Sans KR', sans-serif;border-collapse:collapse; }
 .board table thead * * { border-bottom:2px solid rgb(143,148,46);font-weight:bold; }

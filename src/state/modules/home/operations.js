@@ -85,6 +85,7 @@ const saveSchedule = schedule => dispatch => {
     .post(`/schedules`, schedule)
     .then(result => {
       if (result.status === 200) {
+        alert('저장되었습니다');
         return dispatch(
           saveScheduleSuccess(normalize(result.data, scheduleSchema))
         );
@@ -94,12 +95,13 @@ const saveSchedule = schedule => dispatch => {
 };
 
 const changeSchedule = schedule => dispatch => {
+  console.log(schedule);
   dispatch(changeScheduleRequest());
   return client
     .put(`/schedules/${schedule.schedule.id}`, schedule.changes)
     .then(result => {
       if (result.status === 200) {
-        // alert("변경되었습니다");
+        alert('변경되었습니다');
         return dispatch(
           changeScheduleSuccess(normalize(result.data, scheduleSchema))
         );

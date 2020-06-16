@@ -56,7 +56,7 @@ export function fetchSchedulesRequest() {
 }
 
 export function fetchSchedulesSuccess({ entities }) {
-  console.log(entities);
+  // console.log(entities);
   return {
     type: types.FETCH_SCHEDULES_SUCCESS,
     entities

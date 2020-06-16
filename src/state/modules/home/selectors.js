@@ -63,7 +63,7 @@ const getSchedules = (state, props) => {
   const schedules = [];
   Object.keys(entities.schedules).forEach(id => {
     const schedule = entities.schedules[id];
-    schedules.push(schedule);
+    schedules.push({ ...schedule });
   });
 
   return schedules;
